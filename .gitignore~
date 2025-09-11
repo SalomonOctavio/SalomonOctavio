@@ -1,0 +1,6 @@
+# Ignorar credenciales y archivos sensibles
+.aws/
+*.pem
+*.key
+credentials
+config
