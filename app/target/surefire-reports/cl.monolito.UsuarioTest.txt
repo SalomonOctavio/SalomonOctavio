@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: cl.monolito.AppTest
+Test set: cl.monolito.UsuarioTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s -- in cl.monolito.AppTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.093 s -- in cl.monolito.UsuarioTest

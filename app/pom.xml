@@ -11,7 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- Fuerza Java 21 (corrige los avisos de 1.8) -->
+    <!-- Fuerza Java 21 -->
     <maven.compiler.release>21</maven.compiler.release>
     <junit.jupiter.version>5.10.2</junit.jupiter.version>
   </properties>
@@ -42,6 +42,16 @@
         <version>3.2.5</version>
         <configuration>
           <useModulePath>false</useModulePath>
+        </configuration>
+      </plugin>
+
+      <!-- Plugin para ejecutar la app con mvn exec:java -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <mainClass>cl.monolito.App</mainClass>
         </configuration>
       </plugin>
     </plugins>

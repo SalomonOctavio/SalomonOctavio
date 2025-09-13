@@ -6,112 +6,167 @@ import java.util.List;
 
 public class App {
 
-    // CREATE
-    public static void crearUsuario(String nombre, String email, String password) {
-        String sql = "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)";
+    // =========================
+    //  Compatibilidad con tests
+    // =========================
+
+    /** Limpia la tabla y reinicia el ID (útil para tests/demos). */
+    public static void resetForTests() {
+        try (Connection conn = DatabaseConfig.getConnection();
+             Statement st = conn.createStatement()) {
+            st.execute("TRUNCATE TABLE usuarios RESTART IDENTITY");
+        } catch (SQLException e) {
+            throw new RuntimeException("No se pudo resetear la tabla usuarios", e);
+        }
+    }
+
+    /** Sobrecarga sin password para compatibilidad con tests antiguos. */
+    public static Usuario crearUsuario(String nombre, String email) {
+        return crearUsuario(nombre, email, "changeme");
+    }
+
+    // =========================
+    //  CRUD REAL (PostgreSQL)
+    // =========================
+
+    /**
+     * CREATE con UPSERT por email:
+     * - Inserta (nombre, email, password)
+     * - Si el email ya existe (único), actualiza el nombre
+     * - Devuelve el usuario con ID asignado
+     */
+    public static Usuario crearUsuario(String nombre, String email, String password) {
+        final String sql = """
+            INSERT INTO usuarios (nombre, email, password)
+            VALUES (?, ?, ?)
+            ON CONFLICT (email) DO UPDATE
+                SET nombre = EXCLUDED.nombre
+            RETURNING id
+            """;
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, nombre);
             ps.setString(2, email);
             ps.setString(3, password);
-            ps.executeUpdate();
-            System.out.println("✅ Usuario creado en BD: " + email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int id = rs.getInt(1);
+                    return new Usuario(id, nombre, email);
+                }
+            }
         } catch (SQLException e) {
-            System.err.println("Error creando usuario: " + e.getMessage());
+            throw new RuntimeException("Error creando/actualizando usuario (upsert)", e);
         }
+        return null;
     }
 
-    // READ (uno)
+    /** READ (uno): obtiene usuario por ID */
     public static Usuario obtenerUsuario(int id) {
-        String sql = "SELECT id, nombre, email, password FROM usuarios WHERE id = ?";
+        final String sql = "SELECT id, nombre, email FROM usuarios WHERE id = ?";
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return new Usuario(
-                            rs.getInt("id"),
-                            rs.getString("nombre"),
-                            rs.getString("email")  // usamos 'correo' como 'email'
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("email")
                     );
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error obteniendo usuario: " + e.getMessage());
+            throw new RuntimeException("Error obteniendo usuario id=" + id, e);
         }
         return null;
     }
 
-    // READ (lista)
+    /** READ (lista): retorna todos los usuarios */
     public static List<Usuario> listarUsuarios() {
-        String sql = "SELECT id, nombre, email, password FROM usuarios ORDER BY id";
+        final String sql = "SELECT id, nombre, email FROM usuarios ORDER BY id";
         List<Usuario> lista = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
                 lista.add(new Usuario(
-                        rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("email")
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("email")
                 ));
             }
         } catch (SQLException e) {
-            System.err.println("Error listando usuarios: " + e.getMessage());
+            throw new RuntimeException("Error listando usuarios", e);
         }
         return lista;
     }
 
-    // UPDATE
+    /** UPDATE: actualiza nombre y email por ID */
     public static boolean actualizarUsuario(int id, String nombre, String email) {
-        String sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?";
+        final String sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?";
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, nombre);
             ps.setString(2, email);
             ps.setInt(3, id);
-            int updated = ps.executeUpdate();
-            return updated > 0;
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Error actualizando usuario: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error actualizando usuario id=" + id, e);
         }
     }
 
-    // DELETE
+    /** DELETE: elimina usuario por ID */
     public static boolean eliminarUsuario(int id) {
-        String sql = "DELETE FROM usuarios WHERE id = ?";
+        final String sql = "DELETE FROM usuarios WHERE id = ?";
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
-            int deleted = ps.executeUpdate();
-            return deleted > 0;
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Error eliminando usuario: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error eliminando usuario id=" + id, e);
         }
     }
 
-    // Demo rápida por consola
+    // =========================
+    //  Demo por consola
+    // =========================
     public static void main(String[] args) {
-        System.out.println("=== CRUD Usuarios con PostgreSQL ===");
+        System.out.println("=== CRUD Usuarios con PostgreSQL (UPSERT) ===");
 
-        crearUsuario("Ana", "ana@email.com", "1234");
-        crearUsuario("Pedro", "pedro@email.com", "abcd");
+        // Para demo limpia en cada ejecución, destapa esta línea:
+        // resetForTests();
 
-        System.out.println("Listado:");
+        // CREATE / UPSERT
+        Usuario u1 = crearUsuario("Ana",   "ana@email.com",   "1234");
+        Usuario u2 = crearUsuario("Pedro", "pedro@email.com", "abcd");
+
+        // Reintenta con el mismo email (no revienta, hace UPSERT del nombre)
+        crearUsuario("Ana Actualizada", "ana@email.com", "xyz");
+
+        // LIST
+        System.out.println("Listado inicial:");
         listarUsuarios().forEach(System.out::println);
 
-        System.out.println("Obtener ID 1: " + obtenerUsuario(1));
+        // READ
+        if (u1 != null) {
+            System.out.println("Obtener ID " + u1.getId() + ": " + obtenerUsuario(u1.getId()));
+        }
 
-        System.out.println("Actualizar ID 2:");
-        boolean ok = actualizarUsuario(2, "Pedro López", "pedro.lopez@email.com");
-        System.out.println("Actualizado? " + ok);
+        // UPDATE
+        if (u2 != null) {
+            System.out.println("Actualizar ID " + u2.getId() + ":");
+            boolean ok = actualizarUsuario(u2.getId(), "Pedro López", "pedro.lopez@email.com");
+            System.out.println("Actualizado? " + ok);
+        }
 
-        System.out.println("Eliminar ID 1:");
-        boolean del = eliminarUsuario(1);
-        System.out.println("Eliminado? " + del);
+        // DELETE
+        if (u1 != null) {
+            System.out.println("Eliminar ID " + u1.getId() + ":");
+            boolean del = eliminarUsuario(u1.getId());
+            System.out.println("Eliminado? " + del);
+        }
 
+        // LIST final
         System.out.println("Listado final:");
         listarUsuarios().forEach(System.out::println);
     }
