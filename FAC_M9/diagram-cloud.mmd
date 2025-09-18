@@ -1,0 +1,24 @@
+# Arquitectura de seguridad cloud ☁️🔐
+
+```mermaid
+flowchart LR
+  U[Usuario] -->|TLS/SSL| CF[CloudFront/CDN]
+  CF -->|TLS/SSL| ALB[Application Load Balancer]
+  ALB --> APP["Aplicacion ECS/EKS/EC2/Lambda"]
+
+  APP --> DB[(RDS/DynamoDB - cifrado KMS)]
+  APP --> S3[(S3 - cifrado KMS)]
+
+  Admin[Admin con MFA] --> IAM["IAM Roles y Politicas"]
+
+  subgraph Monitoreo
+    CT["CloudTrail (auditoria)"]
+    CFG["AWS Config (reglas)"]
+    CW["CloudWatch (logs y alarmas)"]
+  end
+
+  IAM -.-> CT
+  APP -.-> CW
+  DB -.-> CW
+  S3 -.-> CW
+  CFG --> CW
