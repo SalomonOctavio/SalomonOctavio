@@ -1,0 +1,1 @@
+{"Policy":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sqs:SendMessage\",\"Condition\":\"System.Collections.Hashtable\",\"Principal\":\"System.Collections.Hashtable\",\"Resource\":\"arn:aws:sqs:us-east-1:325478278751:monolito-pedidos\",\"Effect\":\"Allow\",\"Sid\":\"Allow-SNS-Publish\"}]}"}
