@@ -1,19 +1,17 @@
-mermaid
+```mermaid
 flowchart LR
-  %% Internet
-  subgraph Internet
+  %% Límites
+  subgraph Internet [Internet]
     U[Usuario Web/App]
   end
 
-  %% Zona pública
-  subgraph Publico
+  subgraph Publico [Zona pública]
     APIG[API Gateway]
     ALB[ALB (Balanceador)]
   end
 
-  %% VPC privada
-  subgraph VPCPrivada
-    subgraph ECSCluster
+  subgraph VPCPrivada [VPC - Zona privada]
+    subgraph ECSCluster [ECS (Fargate)]
       AUTH[Auth Service]
       CAT[Catalog Service]
       ORD[Orders Service]
@@ -21,8 +19,7 @@ flowchart LR
     RDS[(RDS - BD)]
   end
 
-  %% Servicios AWS
-  subgraph ServiciosAWS
+  subgraph ServiciosAWS [Servicios Gestionados]
     S3[(S3 - Objetos)]
     COG[Cognito (Identidad)]
     CWA[CloudWatch (Logs/Métricas)]
@@ -52,3 +49,6 @@ flowchart LR
   ECR -.->|Docker pull| AUTH
   ECR -.->|Docker pull| CAT
   ECR -.->|Docker pull| ORD
+```
+
+
