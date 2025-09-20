@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.fac.portafolio</groupId>
@@ -10,33 +10,21 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>usuarios</module>
-        <module>pagos</module>
-        <module>inventario</module>
-        <module>notificaciones</module>
+        <module>../usuarios</module>
+        <module>../pagos</module>
+        <module>../inventario</module>
+        <module>../notificaciones</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
-            <!-- Dependencias comunes para todos los microservicios -->
+            <!-- Ejemplo de dependencias comunes -->
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>5.10.0</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>5.11.0</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>io.github.resilience4j</groupId>
-                <artifactId>resilience4j-spring-boot2</artifactId>
-                <version>2.2.0</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>3.2.4</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
