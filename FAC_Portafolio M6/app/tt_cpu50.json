@@ -1,1 +1,0 @@
-{"PredefinedMetricSpecification":{"PredefinedMetricType":"ASGAverageCPUUtilization"},"DisableScaleIn":false,"TargetValue":50}

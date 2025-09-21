@@ -1,1 +1,0 @@
-{"RedrivePolicy":"{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-1:325478278751:monolito-pedidos-dlq\",\"maxReceiveCount\":\"5\"}"}
