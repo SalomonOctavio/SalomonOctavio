@@ -1,4 +1,4 @@
-# Portafolio - SalomonOctavio
+# Fundamentos de Arquitectura Cloud - SalomonOctavio
 
 Este repositorio sirve como índice de mis portafolios del curso **Fundamentos de Arquitectura Cloud**.
 
