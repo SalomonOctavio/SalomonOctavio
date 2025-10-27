@@ -1,16 +1,17 @@
+<<<<<<< HEAD
 # Fundamentos de Arquitectura Cloud - SalomonOctavio
+=======
+# Portafolio — Salomón Oyarzún
+>>>>>>> d127319 (docs(profile): actualizar README del perfil)
 
-Este repositorio sirve como índice de mis portafolios del curso **Fundamentos de Arquitectura Cloud**.
+**PO/PM funcional · Procesos & Transformación Digital (Telecom/Banca/Servicios)**  
+Conecto negocio y TI con foco en procesos, UAT y adopción. Scrum/Kanban · Jira · ERP/CRM · Fundamentos Cloud (AWS).
 
-## 📂 Proyectos
+## 📌 Portafolio profesional
+- **Casos PO/PM (repositorio índice):**  
+  https://github.com/SalomonOctavio/portafolio-profesional  
+  Proyectos: Módulo de Promociones, Canal USSD, Activación Automática, FrontEnd de Ventas, Gestor Corporativo.
 
-- [FAC_Portafolio_M6](https://github.com/SalomonOctavio/FAC_Portafolio_M6)  
-  Arquitectura monolítica sin FrontEnd.
-
-- [FAC_Portafolio_M7](https://github.com/SalomonOctavio/FAC_Portafolio_M7)  
-  Arquitectura de microservicios con orquestación.
-
-- [FAC_M9](https://github.com/SalomonOctavio/FAC_M9)  
-  Diagramas y documentación complementaria.
-
----
+## 🎓 Curso · Fundamentos de Arquitectura Cloud
+- [FAC_Portafolio_M6](https://github.com/SalomonOctavio/FAC_Portafolio_M6) — Arquitectura monolítica sin FrontEnd  
+- [FAC_Portafolio_M7](https://github.com/SalomonOctavio/FAC_Portafolio_M7) — Microservicios con orquestación
