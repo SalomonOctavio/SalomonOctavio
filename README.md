@@ -5,7 +5,7 @@ Conecto negocio y TI con foco en procesos, UAT y adopción. Scrum/Kanban · Jira
 
 ## 📌 Portafolio profesional
 - **Casos PO/PM (repositorio índice):**  
-  [**Portafolio profesional**](https://github.com/SalomonOctavio/portafolio-profesional) — Índice de casos PO/PM
+  [**Portafolio profesional**](https://github.com/SalomonOctavio/portafolio-profesional) — Índice de casos PO/PM.  
   Proyectos: Módulo de Promociones, Canal USSD, Activación Automática, FrontEnd de Ventas, Gestor Corporativo.
 
 ## 🎓 Curso · Fundamentos de Arquitectura Cloud
