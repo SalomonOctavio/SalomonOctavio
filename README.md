@@ -15,7 +15,6 @@
 - [**portafolio-profesional**](https://github.com/SalomonOctavio/portafolio-profesional) — Índice de casos PO/PM  
   Proyectos: Módulo de Promociones, Canal USSD, Activación Automática, Frontend de Ventas, Gestor B2B
 
-> Próximamente se publicará cada caso como repo individual (enlace aquí mismo).
 
 ---
 
