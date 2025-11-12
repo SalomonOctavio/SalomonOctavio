@@ -22,6 +22,7 @@
 | Frontend de Ventas | Interfaz unificada para ventas postpago (portabilidad, crédito, contrato, POS) reduciendo tiempos y errores. | **Coordinador Business Readiness** / Líder UAT: procesos, capacitación y validación con tiendas. |
 | Gestor B2B | Portal para empresas: compra/asignación de bolsas por línea, workflows, SLAs y trazabilidad. | **Coordinador Business Readiness**: preparación funcional, articulación inter-áreas y soporte a UAT/despliegue. |
 | Reportes en Línea (QlikView) | Dashboards de marketing/comercial/operaciones con modelo in-memory y acceso por perfiles. | **PO/PM funcional**: catálogo de KPIs, “fuente única”, UAT y adopción por áreas. |
+| Portal de Ofertas de Datos (WebPortal/ODP) | Autoservicio para consultar consumo/saldo y (de)suscribir ofertas de datos por segmento; notificaciones y orquestación vía OSB ↔ BSCS/ALU/PCRF. | Apoyo funcional: aseguramiento de ofertas, coordinación UAT y soporte a operación/adopción. |
 
 ---
 
