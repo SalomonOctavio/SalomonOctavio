@@ -12,7 +12,7 @@
 ---
 
 ### 📌 Repos destacados
-- **portafolio-profesional** — Índice de casos PO/PM
+- [**portafolio-profesional**](https://github.com/SalomonOctavio/portafolio-profesional) — Índice de casos PO/PM
 
 | Proyecto | Descripción del proyecto | Mi rol |
 |---|---|---|
