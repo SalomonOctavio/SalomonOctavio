@@ -11,10 +11,17 @@
 
 ---
 
-## 📌 Repos destacados
-- [**portafolio-profesional**](https://github.com/SalomonOctavio/portafolio-profesional) — Índice de casos PO/PM  
-  Proyectos: Módulo de Promociones, Canal USSD, Activación Automática, Frontend de Ventas, Gestor B2B
+### 📌 Repos destacados
+- **portafolio-profesional** — Índice de casos PO/PM
 
+| Proyecto | Descripción del proyecto | Mi rol |
+|---|---|---|
+| Módulo de Promociones | Motor de reglas para asignar beneficios por evento (altas, cambios, recargas) con trazabilidad y UAT simplificado. | PO/PM funcional: priorización, criterios de aceptación, go/no-go y monitoreo post. |
+| Activación Automática | Activación de SIM prepago al primer uso real, eliminando pre-aprovisionamiento y consumo anticipado de numeración. | PO funcional: coordinación interna, validación E2E, planificación y liberación. |
+| Canal USSD | Autogestión *103# para saldo, número y compra de bolsas; adopción orgánica y descarga de IVR. | PO funcional: definición de menú MVP, validación, habilitación y seguimiento en reportes. |
+| Frontend de Ventas | Interfaz unificada para ventas postpago (portabilidad, crédito, contrato, POS) reduciendo tiempos y errores. | Coordinador Business Readiness / Líder UAT: procesos, capacitación y validación con tiendas. |
+| Gestor B2B | Portal para empresas: compra/asignación de bolsas por línea, workflows, SLAs y trazabilidad. | Coordinador Business Readiness: definición de flujos, reglas por producto, UAT y despliegue progresivo. |
+| Reportes en Línea (QlikView) | Dashboards de marketing/comercial/operaciones con modelo in-memory y acceso por perfiles. | PO/PM funcional: catálogo de KPIs, “fuente única”, UAT y adopción por áreas. |
 
 ---
 
