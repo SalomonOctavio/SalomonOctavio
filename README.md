@@ -23,9 +23,8 @@
 | Gestor B2B | Portal para empresas: compra/asignación de bolsas por línea, workflows, SLAs y trazabilidad. | **Coordinador Business Readiness**: preparación funcional, articulación inter-áreas y soporte a UAT/despliegue. |
 | Reportes en Línea (QlikView) | Dashboards de marketing/comercial/operaciones con modelo in-memory y acceso por perfiles. | **PO/PM funcional**: catálogo de KPIs, “fuente única”, UAT y adopción por áreas. |
 | Portal de Ofertas de Datos (WebPortal/ODP) | Autoservicio para consultar consumo/saldo y (de)suscribir ofertas de datos por segmento; notificaciones y orquestación vía OSB ↔ BSCS/ALU/PCRF. | Apoyo funcional: aseguramiento de ofertas, coordinación UAT y soporte a operación/adopción. |
-| **Separación Q-Chat (TELCO, 2014)** | HPPTT de “core” a opcional; reglas por plan/equipo; masivo on/off; normalización | [Repo](https://github.com/SalomonOctavio/Separacion-qchat) |
-| **Tráfico Intra-Grupo (TELCO, 2014)** | Llamadas $0 entre líneas del mismo RUT; sin consumo de bolsa; factura con costo 0; reportería y validadores | [Repo](https://github.com/SalomonOctavio/Trafico-intragrupo) |
-
+| **Separación Q-Chat (TELCO, 2014)** | HPPTT de “core” a opcional; reglas por plan/equipo; masivo on/off; normalización | Mi rol: PO funcional — reglas No-Core por plan/equipo, coordinación CRM/BSCS/OSB/OTA/HLR, UAT y normalización con masivo on/off |
+| **Tráfico Intra-Grupo (TELCO, 2014)** | Llamadas $0 entre líneas del mismo RUT; sin consumo de bolsa; factura con costo 0; reportería | Mi rol: PO funcional — flags/defaults y tasación $0 con factura detallada, articulación CRM/BSCS/Mediación, UAT y reportería |
 
 ---
 
