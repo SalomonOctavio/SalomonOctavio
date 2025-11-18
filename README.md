@@ -24,6 +24,8 @@
 | Reportes en Línea (QlikView) | Dashboards de marketing/comercial/operaciones con modelo in-memory y acceso por perfiles. | **PO/PM funcional**: catálogo de KPIs, “fuente única”, UAT y adopción por áreas. |
 | Portal de Ofertas de Datos (WebPortal/ODP) | Autoservicio para consultar consumo/saldo y (de)suscribir ofertas de datos por segmento; notificaciones y orquestación vía OSB ↔ BSCS/ALU/PCRF. | Apoyo funcional: aseguramiento de ofertas, coordinación UAT y soporte a operación/adopción. |
 | **Separación Q-Chat (TELCO, 2014)** | HPPTT de “core” a opcional; reglas por plan/equipo; masivo on/off; normalización | [Repo](https://github.com/SalomonOctavio/Separacion-qchat) |
+| **Tráfico Intra-Grupo (TELCO, 2014)** | Llamadas $0 entre líneas del mismo RUT; sin consumo de bolsa; factura con costo 0; reportería y validadores | [Repo](https://github.com/SalomonOctavio/Trafico-intragrupo) |
+
 
 ---
 
